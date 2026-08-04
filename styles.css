@@ -1,0 +1,63 @@
+body{
+    font-family: Arial, sans-serif;
+    margin:30px;
+    background: #f4f6f8;
+}
+
+h1{
+    color: #333;
+}
+
+form{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+input{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button{
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#btnGuardar{
+    background: #28a745;
+    color: white;
+}
+
+#btnCancelar{
+    background: #6c757d;
+    color: white;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td{
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th{
+    background: #e9ecef;
+}
+
+.acciones button{
+    margin-right: 5px;
+}
+
+/*.oculto{
+    display: none;
+}*/
