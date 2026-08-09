@@ -1,6 +1,6 @@
 let datos = [
-    {id: 1, nombre: 'Byron', edad: 23},
-    {id: 2, nombre: 'Danna', edad: 30}
+    {id: 1, nombre: 'Byron', email: 'byronjorge.158@gmail.com', edad: 23},
+    {id: 2, nombre: 'Danna', email: 'danna.147@hotmail.com', edad: 30}
 ];
 
 //ELEMENTOS DEL DOM
@@ -8,6 +8,7 @@ const form = document.getElementById('formulario');
 const idInput = document.getElementById('id');
 const nombreInput = document.getElementById('nombre');
 const edadInput = document.getElementById('edad');
+const emailInput = document.getElementById('email');
 const btnGuardar = document.getElementById('btnGuardar');
 const btnCancelar = document.getElementById('btnCancelar');
 const tbody = document.querySelector('#tabla tbody');
@@ -21,8 +22,9 @@ function renderizar() {
                 <td>${d.id}</td>
                 <td>${d.nombre}</td>
                 <td>${d.edad}</td>
+                <td>${d.email}</td>
                 <td class="acciones">
-                    <button onClick="editar(${d.id})">Editar</button>
+                    <button onClick="editar(${d.id})"style="background: #0000FF; color: white">Editar</button>
                     <button onClick="eliminar(${d.id})"style="background: #dc3545; color: white">Eliminar</button>
                 </td>
             </tr>`;
@@ -37,18 +39,21 @@ form.addEventListener('submit', e => {
     const id = idInput.value;
     const nombre = nombreInput.value.trim();
     const edad = +edadInput.value;
+    const email = emailInput.value.trim();
 
     if (id) {
         // Actualizar
         const item = datos.find(d => d.id == id);
         item.nombre = nombre;
         item.edad = edad;
+        item.email = email;
     } else {
         // Crear
         datos.push({
             id: Date.now(),
             nombre,
-            edad
+            edad,
+            email
         });
     }
 
@@ -67,6 +72,7 @@ function editar(id) {
     idInput.value = item.id;
     nombreInput.value = item.nombre;
     edadInput.value = item.edad;
+    emailInput.value = item.email;
 
     btnGuardar.textContent = 'Actualizar';
     btnCancelar.classList.remove('oculto');
