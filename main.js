@@ -35,9 +35,75 @@ function renderizar() {
     });
 }
 
+// VALIDAR FORMULARIO
+function validarFormulario() {
+
+    let valido = true;
+
+    // Limpiar mensajes anteriores
+    errorNombre.textContent = '';
+    errorEdad.textContent = '';
+    errorEmail.textContent = '';
+
+    nombreInput.classList.remove('input-error');
+    edadInput.classList.remove('input-error');
+    emailInput.classList.remove('input-error');
+
+    // VALIDAR NOMBRE
+    const nombre = nombreInput.value.trim();
+
+    if (nombre === '') {
+        errorNombre.textContent = 'El nombre es obligatorio.';
+        nombreInput.classList.add('input-error');
+        valido = false;
+    } else if (nombre.length < 2) {
+        errorNombre.textContent = 'El nombre debe contener al menos 2 caracteres.';
+        nombreInput.classList.add('input-error');
+        valido = false;
+    } else if (!/^[a-zA-ZÁÉÍÓÚáéíóúÑñ\s]+$/.test(nombre)) {
+        errorNombre.textContent = 'El nombre no puede contener números ni caracteres especiales.';
+        nombreInput.classList.add('input-error');
+        valido = false;
+    }
+
+    // VALIDAR EDAD
+    const edad = Number(edadInput.value);
+
+    if (edadInput.value === '') {
+        errorEdad.textContent = 'La edad es obligatoria.';
+        edadInput.classList.add('input-error');
+        valido = false;
+    } else if (edad < 1 || edad > 99) {
+        errorEdad.textContent = 'La edad debe estar entre 1 y 99 años.';
+        edadInput.classList.add('input-error');
+        valido = false;
+    }
+
+    // VALIDAR EMAIL
+    const email = emailInput.value.trim();
+
+    const formatoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (email === '') {
+        errorEmail.textContent = 'El correo electrónico es obligatorio.';
+        emailInput.classList.add('input-error');
+        valido = false;
+    } else if (!formatoEmail.test(email)) {
+        errorEmail.textContent = 'Ingresa un correo electrónico válido.';
+        emailInput.classList.add('input-error');
+        valido = false;
+    }
+
+    return valido;
+}
+
 // CREAR Y ACTUALIZAR (CREATE / UPDATE)
 form.addEventListener('submit', e => {
     e.preventDefault();
+
+    if (!validarFormulario()) {
+        return;
+    }
 
     const id = idInput.value;
     const nombre = nombreInput.value.trim();
