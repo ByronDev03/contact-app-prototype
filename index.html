@@ -11,9 +11,22 @@
 
     <form id="formulario">
         <input type="hidden" id="id">
-        <input type="text" id="nombre" placeholder="Nombre" required>
-        <input type="number" id="edad" placeholder="Edad" required>
-        <input type="text" id="email" placeholder="Correo Electrónico" required>
+        
+        <div class="campo">
+            <input type="text" id="nombre" placeholder="Nombre">
+            <small id="errorNombre" class="mensaje-error"></small>
+        </div>
+        
+        <div class="campo">
+            <input type="number" id="edad" placeholder="Edad">
+            <small id="errorEdad" class="mensaje-error"></small>
+        </div>
+
+        <div class="campo">
+            <input type="email" id="email" placeholder="Correo Electrónico">
+            <small id="errorEmail" class="mensaje-error"></small>
+        </div>
+        
         <button type="submit" id="btnGuardar">Agregar</button>
         <button type="button" id="btnCancelar" class="oculto">Cancelar</button>
     </form>
