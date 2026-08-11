@@ -12,6 +12,9 @@ const emailInput = document.getElementById('email');
 const btnGuardar = document.getElementById('btnGuardar');
 const btnCancelar = document.getElementById('btnCancelar');
 const tbody = document.querySelector('#tabla tbody');
+const errorNombre = document.getElementById('errorNombre');
+const errorEdad = document.getElementById('errorEdad');
+const errorEmail = document.getElementById('errorEmail');
 
 // MOSTRAR DATOS (READ)
 function renderizar() {
