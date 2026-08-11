@@ -173,4 +173,14 @@ btnCancelar.addEventListener('click', () => {
 
     // Ocultar el botón cancelar
     btnCancelar.classList.add('oculto');
+
+    // Limpiar mensajes de error
+    errorNombre.textContent = '';
+    errorEdad.textContent = '';
+    errorEmail.textContent = '';
+
+    // Quitar estilos de error
+    nombreInput.classList.remove('input-error');
+    edadInput.classList.remove('input-error');
+    emailInput.classList.remove('input-error');
 });
