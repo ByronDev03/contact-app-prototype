@@ -27,8 +27,15 @@ function renderizar() {
                 <td>${d.edad}</td>
                 <td>${d.email}</td>
                 <td class="acciones">
-                    <button onClick="editar(${d.id})"style="background: #0000FF; color: white">Editar</button>
-                    <button onClick="eliminar(${d.id})"style="background: #dc3545; color: white">Eliminar</button>
+                    <button class="btn-editar" onClick="editar(${d.id})">
+                        <i class="bi bi-pencil"></i>
+                        <span>Editar</span>
+                    </button>
+
+                    <button class="btn-eliminar" onClick="eliminar(${d.id})">
+                        <i class="bi bi-trash"></i>
+                        <span>Eliminar</span>
+                    </button>
                 </td>
             </tr>`;
             tbody.insertAdjacentHTML('beforeend', fila);

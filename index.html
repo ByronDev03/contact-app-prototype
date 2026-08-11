@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"> 
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -27,8 +28,14 @@
             <small id="errorEmail" class="mensaje-error"></small>
         </div>
         
-        <button type="submit" id="btnGuardar">Agregar</button>
-        <button type="button" id="btnCancelar" class="oculto">Cancelar</button>
+        <button type="submit" id="btnGuardar">
+            <i class="bi bi-plus-circle"></i>
+            <span>Agregar</span>
+        </button>
+        <button type="button" id="btnCancelar" class="oculto">
+            <i class="bi bi-x-lg"></i>
+            <span>Cancelar</span>
+        </button>
     </form>
 
     <table id="tabla">

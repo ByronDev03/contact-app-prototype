@@ -39,18 +39,71 @@ input{
 button{
     padding: 8px 12px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 14px;
+    transition: 0.2s ease;
 }
+
+button i {
+    font-size: 15px;
+}
+
+/* AGREGAR */
 
 #btnGuardar{
     background: #28a745;
     color: white;
 }
 
+#btnGuardar:hover{
+    background: #218838;
+}
+
+/* CANCELAR */
+
 #btnCancelar{
     background: #6c757d;
     color: white;
+}
+
+#btnCancelar:hover{
+    background: #5a6268;
+}
+
+/* EDITAR */
+
+.btn-editar {
+    background: #0000ff;
+    color: white;
+}
+
+.btn-editar:hover {
+    background: #0000cc;
+}
+
+/* ELIMINAR */
+
+.btn-eliminar {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-eliminar:hover {
+    background: #c82333;
+}
+
+.acciones button{
+    margin-right: 5px;
+}
+
+.oculto{
+    display: none;
 }
 
 table{
@@ -67,12 +120,4 @@ th, td{
 
 th{
     background: #e9ecef;
-}
-
-.acciones button{
-    margin-right: 5px;
-}
-
-.oculto{
-    display: none;
 }
