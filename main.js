@@ -135,7 +135,10 @@ form.addEventListener('submit', e => {
 
     form.reset();
     idInput.value = '';
-    btnGuardar.textContent = 'Agregar';
+
+    btnGuardar.querySelector('span').textContent = 'Agregar';
+    btnGuardar.querySelector('i').className = 'bi bi-plus-circle';
+
     btnCancelar.classList.add('oculto');
 
     renderizar();
@@ -150,7 +153,9 @@ function editar(id) {
     edadInput.value = item.edad;
     emailInput.value = item.email;
 
-    btnGuardar.textContent = 'Actualizar';
+    btnGuardar.querySelector('span').textContent = 'Actualizar';
+    btnGuardar.querySelector('i').className = 'bi bi-arrow-repeat';
+
     btnCancelar.classList.remove('oculto');
 
     window.scrollTo({
@@ -175,8 +180,9 @@ btnCancelar.addEventListener('click', () => {
     // Vaciar el id oculto
     idInput.value = '';
 
-    // Cambiar el botón principal
-    btnGuardar.textContent = 'Agregar';
+    // Restaurar botón Agregar
+    btnGuardar.querySelector('span').textContent = 'Agregar';
+    btnGuardar.querySelector('i').className = 'bi bi-plus-circle';
 
     // Ocultar el botón cancelar
     btnCancelar.classList.add('oculto');
