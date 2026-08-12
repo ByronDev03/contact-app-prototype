@@ -1,7 +1,11 @@
-let datos = [
+let datos = JSON.parse(localStorage.getItem('usuarios')) || [
     {id: 1, nombre: 'Byron', email: 'byronjorge.158@gmail.com', edad: 23},
     {id: 2, nombre: 'Danna', email: 'danna.147@hotmail.com', edad: 30}
 ];
+
+function guardarDatos() {
+    localStorage.setItem('usuarios', JSON.stringify(datos));
+}
 
 //ELEMENTOS DEL DOM
 const form = document.getElementById('formulario');
@@ -132,6 +136,8 @@ form.addEventListener('submit', e => {
             email
         });
     }
+
+    guardarDatos();
 
     form.reset();
     idInput.value = '';
