@@ -174,6 +174,7 @@ function editar(id) {
 function eliminar(id) {
     if (confirm('¿Eliminar este registro?')) {
         datos = datos.filter(d => d.id != id);
+        guardarDatos();
         renderizar();
     }
 }
@@ -203,3 +204,5 @@ btnCancelar.addEventListener('click', () => {
     edadInput.classList.remove('input-error');
     emailInput.classList.remove('input-error');
 });
+
+renderizar();
