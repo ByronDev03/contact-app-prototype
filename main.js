@@ -205,4 +205,3 @@ btnCancelar.addEventListener('click', () => {
     emailInput.classList.remove('input-error');
 });
 
-renderizar();
