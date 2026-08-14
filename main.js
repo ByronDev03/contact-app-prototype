@@ -19,11 +19,30 @@ const tbody = document.querySelector('#tabla tbody');
 const errorNombre = document.getElementById('errorNombre');
 const errorEdad = document.getElementById('errorEdad');
 const errorEmail = document.getElementById('errorEmail');
+const busquedaInput = document.getElementById('busqueda');
+const filtroEdad = document.getElementById('filtroEdad');
+const btnLimpiarFiltros = document.getElementById('btnLimpiarFiltros');
+const contadorResultados = document.getElementById('contadorResultados');
 
 // MOSTRAR DATOS (READ)
-function renderizar() {
+function renderizar(lista = datos) {
     tbody.innerHTML = '';
-    datos.forEach (d => {
+
+    if (lista.length == 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="5" class="sin-resultados">
+                    <i class="bi bi-search"></i>
+                    No se encontaron resultados.
+                </td>
+            </tr>    
+        `;
+
+        contadorResultados.textContent = '0 resultados';
+        return;
+    }
+
+    lista.forEach(d => {
         const fila = `
             <tr>
                 <td>${d.id}</td>
@@ -31,6 +50,7 @@ function renderizar() {
                 <td>${d.edad}</td>
                 <td>${d.email}</td>
                 <td class="acciones">
+                
                     <button class="btn-editar" onClick="editar(${d.id})">
                         <i class="bi bi-pencil"></i>
                         <span>Editar</span>
@@ -42,9 +62,56 @@ function renderizar() {
                     </button>
                 </td>
             </tr>`;
-            tbody.insertAdjacentHTML('beforeend', fila);
+        tbody.insertAdjacentHTML('beforeend', fila);
     });
+
+    contadorResultados.textContent = 
+        `${lista.length} ${lista.length === 1 ? 'resultado' : 'resultado'}`;
 }
+
+// BÚSQUEDA Y FILTRADO
+function aplicarFiltros() {
+    const texto = busquedaInput.value.trim().toLowerCase();
+    const rangoEdad = filtroEdad.value;
+
+    const resultados = datos.filter(d => {
+        const coincideTexto = 
+            d.nombre.toLowerCase().includes(texto) ||
+            d.email.toLowerCase().includes(texto);
+
+        let coincideEdad = true;
+
+        if (rangoEdad === '1-17') {
+            coincideEdad = d.edad >= 1 && d.edad <= 17;
+        }
+
+        if (rangoEdad === '18-30') {
+            coincideEdad = d.edad >= 18 && d.edad <= 30;
+        }
+
+        if (rangoEdad === '31-50') {
+            coincideEdad = d.edad >= 31 && d.edad <= 50;
+        }
+
+        if (rangoEdad === '51-99') {
+            coincideEdad = d.edad >= 51 && d.edad <= 99;
+        }
+
+        return coincideTexto && coincideEdad;
+    });
+
+    renderizar(resultados);
+}
+
+busquedaInput.addEventListener('input', aplicarFiltros);
+
+filtroEdad.addEventListener('change', aplicarFiltros);
+
+btnLimpiarFiltros.addEventListener('click', () => {
+    busquedaInput.value = '';
+    filtroEdad.value = '';
+    renderizar();
+});
 
 // VALIDAR FORMULARIO
 function validarFormulario() {

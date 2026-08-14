@@ -38,6 +38,34 @@
         </button>
     </form>
 
+    <div class="filtros">
+        <div class="campo-filtro">
+            <label for="busqueda">Buscar</label>
+            <div class="input-busqueda">
+                <i class="bi bi-search"></i>
+                <input type="text" id="busqueda" placeholder="Nombre o Correo Electrónico">
+            </div>
+        </div>
+
+        <div class="campo-filtro">
+            <label for="filtroEdad">Filtrar por edad</label>
+            <select id="filtroEdad">
+                <option value="">Todas las edades</option>
+                <option value="1-17">1 - 17 años</option>
+                <option value="18-30">18 - 30 años</option>
+                <option value="31-50">31 - 50 años</option>
+                <option value="51-99">51 - 99 años</option>
+            </select>
+        </div>
+
+        <button type="button" id="btnLimpiarFiltros">
+            <i class="bi bi-arrow-counterclockwise"></i>
+            <span>Limpiar</span>
+        </button>
+    </div>
+
+    <p id="contadorResultados"></p>
+
     <table id="tabla">
         <thead>
             <tr>
