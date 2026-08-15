@@ -66,7 +66,7 @@ function renderizar(lista = datos) {
     });
 
     contadorResultados.textContent = 
-        `${lista.length} ${lista.length === 1 ? 'resultado' : 'resultado'}`;
+        `${lista.length} ${lista.length === 1 ? 'resultado' : 'resultados'}`;
 }
 
 // BÚSQUEDA Y FILTRADO
