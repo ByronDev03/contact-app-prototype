@@ -1,48 +1,32 @@
 /* ==============================
    RESET
 ================================= */
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-
 :root {
-
     --background: #f4f6f8;
-
     --card: #ffffff;
-
     --text: #202124;
-
     --muted: #6b7280;
-
     --border: #e1e5ea;
-
     --input: #f7f8fa;
-
     --primary: #2563eb;
-
     --primary-hover: #1d4ed8;
-
     --danger: #dc3545;
-
     --shadow:
         0 25px 60px rgba(15, 23, 42, 0.12);
 }
 
-
 body {
-
     min-height: 100vh;
-
     font-family:
         Arial,
         Helvetica,
         sans-serif;
-
     background:
         radial-gradient(
             circle at top left,
@@ -50,7 +34,6 @@ body {
             transparent 35%
         ),
         var(--background);
-
     color: var(--text);
 }
 
@@ -58,15 +41,10 @@ body {
 /* ==============================
    CONTENEDOR
 ================================= */
-
 .page {
-
     min-height: 100vh;
-
     display: grid;
-
     place-items: center;
-
     padding: 30px 20px;
 }
 
@@ -74,118 +52,74 @@ body {
 /* ==============================
    TARJETA 3D
 ================================= */
-
 .auth-card {
-
     width: min(100%, 440px);
-
     height: 650px;
-
     perspective: 1400px;
 }
 
-
 .auth-card__inner {
-
     width: 100%;
-
     height: 100%;
-
     position: relative;
-
     transform-style: preserve-3d;
-
     transition:
         transform 0.75s
         cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
-
 /*
     Cuando JavaScript agrega
     .is-flipped:
-
     rotateY(180deg)
-
     hace que aparezca la
     segunda cara.
 */
 
 .auth-card.is-flipped
 .auth-card__inner {
-
     transform: rotateY(180deg);
 }
-
 
 /* ==============================
    CARAS
 ================================= */
-
 .auth-face {
-
     position: absolute;
-
     inset: 0;
-
     background: var(--card);
-
     border: 1px solid
         rgba(255, 255, 255, 0.9);
-
     border-radius: 24px;
-
     box-shadow: var(--shadow);
-
     backface-visibility: hidden;
-
     -webkit-backface-visibility: hidden;
-
     overflow: hidden;
 }
 
-
 .auth-face::before {
-
     content: "";
-
     position: absolute;
-
     width: 230px;
-
     height: 230px;
-
     border-radius: 50%;
-
     background:
         rgba(37, 99, 235, 0.08);
-
     top: -100px;
-
     right: -90px;
 }
 
-
 .auth-face::after {
-
     content: "";
-
     position: absolute;
-
     width: 180px;
-
     height: 180px;
-
     border-radius: 50%;
-
     background:
         rgba(37, 99, 235, 0.05);
-
     bottom: -90px;
-
     left: -80px;
 }
-
 
 /*
     La cara trasera empieza
@@ -193,600 +127,415 @@ body {
 */
 
 .auth-face--back {
-
     transform: rotateY(180deg);
+    pointer-events: none;
 }
-
 
 /* ==============================
    CONTENIDO
 ================================= */
-
 .auth-content {
-
     position: relative;
-
     z-index: 1;
-
     height: 100%;
-
     display: flex;
-
     flex-direction: column;
-
     padding: 42px;
 }
-
 
 /* ==============================
    MARCA
 ================================= */
-
 .brand {
-
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
     font-size: 16px;
-
     font-weight: 700;
-
     margin-bottom: 55px;
 }
 
-
 .brand__icon {
-
     width: 36px;
-
     height: 36px;
-
     display: grid;
-
     place-items: center;
-
     border-radius: 10px;
-
     background: var(--primary);
-
     color: white;
-
     font-size: 18px;
 }
-
 
 /* ==============================
    HEADER
 ================================= */
-
 .auth-header {
-
     margin-bottom: 30px;
 }
 
-
 .auth-header__eyebrow {
-
     color: var(--primary);
-
     font-size: 13px;
-
     font-weight: 700;
-
     margin-bottom: 8px;
 }
-
 
 .auth-header h1,
 .auth-header h2 {
-
     font-size: 30px;
-
     line-height: 1.2;
-
     margin-bottom: 8px;
 }
 
-
 .auth-header > p:last-child {
-
     color: var(--muted);
-
     font-size: 14px;
-
     line-height: 1.5;
 }
-
 
 /* ==============================
    FORMULARIO
 ================================= */
-
 .auth-form {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 18px;
 }
 
-
 .form-group {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 7px;
 }
 
-
 .form-group label {
-
     font-size: 13px;
-
     font-weight: 700;
 }
 
-
 .input-wrapper {
-
     position: relative;
 }
 
-
 .input-wrapper > i {
-
     position: absolute;
-
     left: 15px;
-
     top: 50%;
-
     transform:
         translateY(-50%);
-
     color: #8b95a5;
-
     pointer-events: none;
 }
 
-
 .input-wrapper input {
-
     width: 100%;
-
     height: 48px;
-
     border: 1px solid var(--border);
-
     border-radius: 10px;
-
     background: var(--input);
-
     padding:
         0 44px;
-
     color: var(--text);
-
     outline: none;
-
     font-size: 14px;
-
     transition: 0.2s ease;
 }
 
-
 .input-wrapper input::placeholder {
-
     color: #9aa2ad;
 }
 
-
 .input-wrapper input:focus {
-
     border-color:
         var(--primary);
-
     background: white;
-
     box-shadow:
         0 0 0 3px
         rgba(37, 99, 235, 0.10);
 }
 
-
 /* ==============================
    PASSWORD
 ================================= */
-
 .password-toggle {
-
     position: absolute;
-
     right: 10px;
-
     top: 50%;
-
     transform:
         translateY(-50%);
-
     width: 32px;
-
     height: 32px;
-
     display: grid;
-
     place-items: center;
-
     border: 0;
-
     background: transparent;
-
     color: #8b95a5;
-
     cursor: pointer;
-
     border-radius: 6px;
 }
 
-
 .password-toggle:hover {
-
     background: #e9edf3;
-
     color: var(--text);
 }
-
 
 /* ==============================
    ERRORES
 ================================= */
-
 .form-error {
-
     min-height: 14px;
-
     color: var(--danger);
-
     font-size: 12px;
 }
-
 
 /* ==============================
    OPCIONES
 ================================= */
-
 .form-options {
-
     display: flex;
-
     justify-content:
         space-between;
-
     align-items: center;
-
     gap: 10px;
-
     margin-top: -2px;
-
     font-size: 12px;
 }
 
-
 .remember {
-
     display: flex;
-
     align-items: center;
-
     gap: 7px;
-
     color: var(--muted);
-
     cursor: pointer;
 }
 
-
 .remember input {
-
     accent-color:
         var(--primary);
 }
 
-
 .form-options a {
-
     color: var(--primary);
-
     text-decoration: none;
 }
 
-
 .form-options a:hover {
-
     text-decoration: underline;
 }
-
 
 /* ==============================
    BOTONES
 ================================= */
-
 .btn {
-
     width: 100%;
-
     height: 48px;
-
     border: 0;
-
     border-radius: 10px;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     gap: 9px;
-
     font-size: 14px;
-
     font-weight: 700;
-
     cursor: pointer;
-
     transition: 0.2s ease;
 }
 
-
 .btn--primary {
-
     background:
         var(--primary);
-
     color: white;
 }
 
-
 .btn--primary:hover {
-
     background:
         var(--primary-hover);
-
     transform:
         translateY(-1px);
 }
 
-
 /* ==============================
    CAMBIO LOGIN / REGISTRO
 ================================= */
-
 .switch-text {
-
     text-align: center;
-
     color: var(--muted);
-
     font-size: 13px;
-
     margin-top: 2px;
 }
 
-
 .switch-button {
-
     border: 0;
-
     background: transparent;
-
     color: var(--primary);
-
     font: inherit;
-
     font-weight: 700;
-
     cursor: pointer;
-
     padding: 0;
 }
 
-
 .switch-button:hover {
-
     text-decoration: underline;
 }
-
 
 /* ==============================
    TOAST
 ================================= */
-
 .toast {
-
     position: fixed;
-
     right: 24px;
-
     bottom: 24px;
-
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
     max-width:
         calc(100% - 48px);
-
     padding:
         13px 17px;
-
     border-radius: 10px;
-
     background: #202124;
-
     color: white;
-
     font-size: 13px;
-
     box-shadow:
         0 12px 30px
         rgba(0, 0, 0, 0.18);
-
     opacity: 0;
-
     visibility: hidden;
-
     transform:
         translateY(15px);
-
     transition: 0.25s ease;
 }
 
-
 .toast.show {
-
     opacity: 1;
-
     visibility: visible;
-
     transform:
         translateY(0);
 }
 
-
 .toast i {
-
     color: #4ade80;
-
     font-size: 17px;
 }
 
+/* ==============================
+   AJUSTE CARA DE REGISTRO
+================================= */
+.auth-face--back .auth-content {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.auth-face--back .brand {
+    margin-bottom: 32px;
+}
+
+.auth-face--back .auth-header {
+    margin-bottom: 20px;
+}
+
+.auth-face--back .auth-form {
+    gap: 12px;
+}
+
+/* ==============================
+   INTERACCIÓN ENTRE CARAS 3D
+================================= */
+/* Por defecto: LOGIN activo */
+.auth-face--front {
+    pointer-events: auto;
+}
+
+/* Cuando la tarjeta está girada: REGISTRO activo */
+.auth-card.is-flipped .auth-face--front {
+    pointer-events: none;
+}
+
+.auth-card.is-flipped .auth-face--back {
+    pointer-events: auto;
+}
 
 /* ==============================
    RESPONSIVE
 ================================= */
-
 @media (max-width: 520px) {
-
     .page {
-
         padding:
             20px 14px;
     }
 
-
     .auth-card {
-
         height: 620px;
     }
 
-
     .auth-content {
-
         padding:
             32px 25px;
     }
 
-
     .brand {
-
         margin-bottom: 42px;
     }
 
-
     .auth-header h1,
     .auth-header h2 {
-
         font-size: 26px;
     }
 
-
     .auth-header {
-
         margin-bottom: 25px;
     }
 
-
     .auth-form {
-
         gap: 14px;
     }
 
-
     .form-options {
-
         align-items:
             flex-start;
-
         flex-direction:
             column;
     }
 
-
     .toast {
-
         right: 14px;
-
         bottom: 14px;
-
         max-width:
             calc(100% - 28px);
     }
 }
 
-
 @media (max-width: 360px) {
-
     .auth-card {
-
         height: 600px;
     }
 
-
     .auth-content {
-
         padding:
             27px 20px;
     }
 
-
     .brand {
-
         margin-bottom: 34px;
     }
 
-
     .auth-header h1,
     .auth-header h2 {
-
         font-size: 24px;
     }
 }
 
-
 /* ==============================
    ACCESIBILIDAD
 ================================= */
-
 @media (prefers-reduced-motion: reduce) {
-
     .auth-card__inner {
-
         transition: none;
     }
 
     .btn,
     .input-wrapper input,
     .toast {
-
         transition: none;
     }
 }

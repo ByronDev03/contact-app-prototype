@@ -3,385 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Login | CRUD App</title>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
     <main class="page">
-
         <section class="auth-card" aria-label="Autenticación">
-
             <div class="auth-card__inner">
-
                 <!-- =========================
-                     LOGIN
+                    LOGIN
                 ========================== -->
-
                 <div class="auth-face auth-face--front">
-
                     <div class="auth-content">
-
                         <div class="brand">
                             <div class="brand__icon">
                                 <i class="bi bi-person-lock"></i>
                             </div>
-
                             <span>CRUD App</span>
                         </div>
 
-
                         <div class="auth-header">
-
-                            <p class="auth-header__eyebrow">
-                                Bienvenido de nuevo
-                            </p>
-
+                            <p class="auth-header__eyebrow">Bienvenido de nuevo</p>
                             <h1>Iniciar sesión</h1>
-
-                            <p>
-                                Ingresa tus datos para continuar.
-                            </p>
-
+                            <p>Ingresa tus datos para continuar.</p>
                         </div>
-
 
                         <form id="loginForm" class="auth-form">
 
                             <!-- EMAIL -->
-
                             <div class="form-group">
-
-                                <label for="loginEmail">
-                                    Correo electrónico
-                                </label>
-
+                                <label for="loginEmail">Correo electrónico</label>
                                 <div class="input-wrapper">
-
                                     <i class="bi bi-envelope"></i>
-
-                                    <input
-                                        type="email"
-                                        id="loginEmail"
-                                        placeholder="correo@ejemplo.com"
-                                        autocomplete="email"
-                                    >
-
+                                    <input type="email" id="loginEmail" placeholder="correo@ejemplo.com" autocomplete="email">
                                 </div>
-
-                                <small
-                                    id="loginEmailError"
-                                    class="form-error"
-                                ></small>
-
+                                <small id="loginEmailError" class="form-error"></small>
                             </div>
-
 
                             <!-- PASSWORD -->
-
                             <div class="form-group">
-
-                                <label for="loginPassword">
-                                    Contraseña
-                                </label>
-
+                                <label for="loginPassword">Contraseña</label>
                                 <div class="input-wrapper">
-
                                     <i class="bi bi-lock"></i>
-
-                                    <input
-                                        type="password"
-                                        id="loginPassword"
-                                        placeholder="Ingresa tu contraseña"
-                                        autocomplete="current-password"
-                                    >
-
-                                    <button
-                                        type="button"
-                                        class="password-toggle"
-                                        data-target="loginPassword"
-                                        aria-label="Mostrar contraseña"
-                                    >
+                                    <input type="password" id="loginPassword" placeholder="Ingresa tu contraseña" autocomplete="current-password">
+                                    <button type="button" class="password-toggle" data-target="loginPassword" aria-label="Mostrar contraseña">
                                         <i class="bi bi-eye"></i>
                                     </button>
-
                                 </div>
-
-                                <small
-                                    id="loginPasswordError"
-                                    class="form-error"
-                                ></small>
-
+                                <small id="loginPasswordError" class="form-error"></small>
                             </div>
-
 
                             <!-- OPCIONES -->
-
                             <div class="form-options">
-
                                 <label class="remember">
-
-                                    <input
-                                        type="checkbox"
-                                        id="remember"
-                                    >
-
-                                    <span>
-                                        Recordarme
-                                    </span>
-
+                                    <input type="checkbox" id="remember">
+                                    <span>Recordarme</span>
                                 </label>
-
-                                <a href="#" id="forgotPassword">
-                                    ¿Olvidaste tu contraseña?
-                                </a>
-
+                                <a href="#" id="forgotPassword">¿Olvidaste tu contraseña?</a>
                             </div>
 
-
                             <!-- BOTÓN -->
-
-                            <button
-                                type="submit"
-                                class="btn btn--primary"
-                            >
-
-                                <span>
-                                    Ingresar
-                                </span>
-
+                            <button type="submit" class="btn btn--primary">
+                                <span>Ingresar</span>
                                 <i class="bi bi-arrow-right"></i>
-
                             </button>
 
-
                             <!-- CAMBIAR A REGISTRO -->
-
-                            <p class="switch-text">
-
-                                ¿No tienes una cuenta?
-
-                                <button
-                                    type="button"
-                                    class="switch-button"
-                                    id="showRegister"
-                                >
-                                    Crear cuenta
-                                </button>
-
+                            <p class="switch-text">¿No tienes una cuenta?
+                                <button type="button" class="switch-button" id="showRegister">Crear cuenta</button>
                             </p>
-
                         </form>
-
                     </div>
-
                 </div>
 
 
                 <!-- =========================
                      REGISTRO
                 ========================== -->
-
                 <div class="auth-face auth-face--back">
-
                     <div class="auth-content">
-
                         <div class="brand">
-
                             <div class="brand__icon">
                                 <i class="bi bi-person-plus"></i>
                             </div>
-
                             <span>CRUD App</span>
-
                         </div>
-
 
                         <div class="auth-header">
-
-                            <p class="auth-header__eyebrow">
-                                Comienza ahora
-                            </p>
-
-                            <h2>
-                                Crear cuenta
-                            </h2>
-
-                            <p>
-                                Regístrate para acceder al sistema.
-                            </p>
-
+                            <p class="auth-header__eyebrow">Comienza ahora</p>
+                            <h2>Crear cuenta</h2>
+                            <p>Regístrate para acceder al sistema.</p>
                         </div>
 
-
-                        <form
-                            id="registerForm"
-                            class="auth-form"
-                        >
+                        <form id="registerForm" class="auth-form">
 
                             <!-- NOMBRE -->
-
                             <div class="form-group">
-
-                                <label for="registerName">
-                                    Nombre completo
-                                </label>
-
+                                <label for="registerName">Nombre completo</label>
                                 <div class="input-wrapper">
-
                                     <i class="bi bi-person"></i>
-
-                                    <input
-                                        type="text"
-                                        id="registerName"
-                                        placeholder="Tu nombre"
-                                        autocomplete="name"
-                                    >
-
+                                    <input type="text" id="registerName" placeholder="Tu nombre" autocomplete="name">
                                 </div>
-
-                                <small
-                                    id="registerNameError"
-                                    class="form-error"
-                                ></small>
-
+                                <small id="registerNameError" class="form-error"></small>
                             </div>
-
 
                             <!-- EMAIL -->
-
                             <div class="form-group">
-
-                                <label for="registerEmail">
-                                    Correo electrónico
-                                </label>
-
+                                <label for="registerEmail">Correo electrónico</label>
                                 <div class="input-wrapper">
-
                                     <i class="bi bi-envelope"></i>
-
-                                    <input
-                                        type="email"
-                                        id="registerEmail"
-                                        placeholder="correo@ejemplo.com"
-                                        autocomplete="email"
-                                    >
-
+                                    <input type="email" id="registerEmail" placeholder="correo@ejemplo.com" autocomplete="email">
                                 </div>
-
-                                <small
-                                    id="registerEmailError"
-                                    class="form-error"
-                                ></small>
-
+                                <small id="registerEmailError" class="form-error"></small>
                             </div>
-
 
                             <!-- PASSWORD -->
-
                             <div class="form-group">
-
-                                <label for="registerPassword">
-                                    Contraseña
-                                </label>
-
+                                <label for="registerPassword">Contraseña</label>
                                 <div class="input-wrapper">
-
                                     <i class="bi bi-lock"></i>
-
-                                    <input
-                                        type="password"
-                                        id="registerPassword"
-                                        placeholder="Crea una contraseña"
-                                        autocomplete="new-password"
-                                    >
-
-                                    <button
-                                        type="button"
-                                        class="password-toggle"
-                                        data-target="registerPassword"
-                                        aria-label="Mostrar contraseña"
-                                    >
+                                    <input type="password" id="registerPassword" placeholder="Crea una contraseña" autocomplete="new-password">
+                                    <button type="button" class="password-toggle" data-target="registerPassword" aria-label="Mostrar contraseña">
                                         <i class="bi bi-eye"></i>
                                     </button>
-
-                                </div>
-
-                                <small
-                                    id="registerPasswordError"
-                                    class="form-error"
-                                ></small>
-
+                                </div> 
+                                <small id="registerPasswordError" class="form-error"></small>
                             </div>
 
-
                             <!-- BOTÓN -->
-
-                            <button
-                                type="submit"
-                                class="btn btn--primary"
-                            >
-
-                                <span>
-                                    Registrarme
-                                </span>
-
+                            <button type="submit" class="btn btn--primary">
+                                <span>Registrarme</span>
                                 <i class="bi bi-person-plus"></i>
-
                             </button>
 
-
                             <!-- VOLVER A LOGIN -->
-
-                            <p class="switch-text">
-
-                                ¿Ya tienes una cuenta?
-
-                                <button
-                                    type="button"
-                                    class="switch-button"
-                                    id="showLogin"
-                                >
-                                    Iniciar sesión
-                                </button>
-
+                            <p class="switch-text">¿Ya tienes una cuenta?
+                                <button type="button" class="switch-button" id="showLogin">Iniciar sesión</button>
                             </p>
-
                         </form>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
     </main>
 
-
     <!-- MENSAJE -->
-
-    <div
-        class="toast"
-        id="toast"
-        role="status"
-        aria-live="polite"
-    >
-
+    <div class="toast" id="toast" role="status" aria-live="polite">
         <i class="bi bi-check-circle"></i>
-
         <span id="toastMessage"></span>
-
     </div>
 
-
     <script src="main.js"></script>
-
 </body>
 </html>
