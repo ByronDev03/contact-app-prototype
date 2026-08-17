@@ -8,17 +8,26 @@
 }
 
 :root {
-    --background: #f4f6f8;
-    --card: #ffffff;
-    --text: #202124;
-    --muted: #6b7280;
-    --border: #e1e5ea;
-    --input: #f7f8fa;
+    --background: #08051a;
+
+    /* Glass */
+    --card: rgba(245, 247, 255, 0.40);
+    --card-border: rgba(255, 255, 255, 0.55);
+
+    /* Textos */
+    --text: #171923;
+    --muted: #334155;
+
+    /* Inputs */
+    --input: rgba(242, 245, 252, 0.86);
+    --border: rgba(148, 163, 184, 0.28);
+
+    /* Colores principales */
     --primary: #2563eb;
     --primary-hover: #1d4ed8;
+    --secondary: #4f46e5;
     --danger: #dc3545;
-    --shadow:
-        0 25px 60px rgba(15, 23, 42, 0.12);
+    --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
 }
 
 body {
@@ -27,13 +36,16 @@ body {
         Arial,
         Helvetica,
         sans-serif;
-    background:
-        radial-gradient(
-            circle at top left,
-            rgba(37, 99, 235, 0.10),
-            transparent 35%
-        ),
-        var(--background);
+    background-color: var(--background);
+    background-image:
+        linear-gradient(
+            rgba(5, 3, 20, 0.18), 
+            rgba(5, 3, 20, 0.18)
+        ), url(/assets/wallpaper.avif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: var(--text);
 }
 
@@ -58,6 +70,9 @@ body {
     perspective: 1400px;
 }
 
+/* ==============================
+   INTERIOR 3D
+================================= */
 .auth-card__inner {
     width: 100%;
     height: 100%;
@@ -87,49 +102,82 @@ body {
 .auth-face {
     position: absolute;
     inset: 0;
+
+    /* Glassmorphism*/
     background: var(--card);
-    border: 1px solid
-        rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--card-border);
     border-radius: 24px;
     box-shadow: var(--shadow);
+
+    /* Efecto cristal */
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    
+    /* Importante para el giro 3D */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+
     overflow: hidden;
 }
 
+/* ==============================
+   REFLEJO DEL CRISTAL
+================================= */
 .auth-face::before {
     content: "";
     position: absolute;
-    width: 230px;
-    height: 230px;
-    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45%;
     background:
-        rgba(37, 99, 235, 0.08);
-    top: -100px;
-    right: -90px;
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.28),
+            rgba(255, 255, 255, 0.04),
+            transparent
+        );
+    pointer-events: none;
+    z-index: 0;
 }
 
+/* ==============================
+   LUZ AZUL / VIOLETA
+================================= */
 .auth-face::after {
     content: "";
     position: absolute;
-    width: 180px;
-    height: 180px;
+    width: 240px;
+    height: 240px;
     border-radius: 50%;
+    right: -110px;
+    bottom: -110px;
     background:
-        rgba(37, 99, 235, 0.05);
-    bottom: -90px;
-    left: -80px;
+        radial-gradient(
+            circle,
+            rgba(99, 102, 241, 0.18),
+            rgba(37, 99, 235, 0.05) 45%,
+            transparent 70%
+        );
+    filter: blur(4px);
+    pointer-events: none;
+    z-index: 0;
 }
 
 /*
-    La cara trasera empieza
+    La cara trasera comienza
     girada 180 grados.
 */
-
 .auth-face--back {
     transform: rotateY(180deg);
+
+    /*
+        La cara oculta no debe
+        recibir interacción.
+    */
     pointer-events: none;
 }
+
 
 /* ==============================
    CONTENIDO
@@ -155,16 +203,32 @@ body {
     margin-bottom: 55px;
 }
 
+
 .brand__icon {
     width: 36px;
     height: 36px;
+
     display: grid;
     place-items: center;
+
     border-radius: 10px;
-    background: var(--primary);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
     color: white;
+
     font-size: 18px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(37, 99, 235, 0.22);
 }
+
 
 /* ==============================
    HEADER
@@ -173,25 +237,34 @@ body {
     margin-bottom: 30px;
 }
 
+
 .auth-header__eyebrow {
     color: var(--primary);
+
     font-size: 13px;
     font-weight: 700;
+
     margin-bottom: 8px;
 }
+
 
 .auth-header h1,
 .auth-header h2 {
     font-size: 30px;
+
     line-height: 1.2;
+
     margin-bottom: 8px;
 }
+
 
 .auth-header > p:last-child {
     color: var(--muted);
     font-size: 14px;
+    font-weight: 500;
     line-height: 1.5;
 }
+
 
 /* ==============================
    FORMULARIO
@@ -199,23 +272,33 @@ body {
 .auth-form {
     display: flex;
     flex-direction: column;
+
     gap: 18px;
 }
+
 
 .form-group {
     display: flex;
     flex-direction: column;
+
     gap: 7px;
 }
 
+
 .form-group label {
     font-size: 13px;
+
     font-weight: 700;
 }
 
+
+/* ==============================
+   INPUT WRAPPER
+================================= */
 .input-wrapper {
     position: relative;
 }
+
 
 .input-wrapper > i {
     position: absolute;
@@ -223,61 +306,109 @@ body {
     top: 50%;
     transform:
         translateY(-50%);
-    color: #8b95a5;
+    color: #7c8799;
     pointer-events: none;
+    transition: color 0.2s ease;
 }
 
+
+/* ==============================
+   INPUTS
+================================= */
 .input-wrapper input {
     width: 100%;
     height: 48px;
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
     border-radius: 10px;
-    background: var(--input);
+    /*
+        Más sólido que la card
+        para mantener legibilidad.
+    */
+    background:
+        var(--input);
     padding:
         0 44px;
     color: var(--text);
     outline: none;
     font-size: 14px;
-    transition: 0.2s ease;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
+
 .input-wrapper input::placeholder {
-    color: #9aa2ad;
+    color: #6b7280;
+    opacity: 1;
 }
+
 
 .input-wrapper input:focus {
     border-color:
         var(--primary);
-    background: white;
+
+    background:
+        rgba(255, 255, 255, 0.94);
+
     box-shadow:
         0 0 0 3px
-        rgba(37, 99, 235, 0.10);
+        rgba(37, 99, 235, 0.12);
 }
+
+
+/*
+    Cambia ligeramente el icono
+    cuando el input recibe focus.
+*/
+.input-wrapper:focus-within > i {
+    color: var(--primary);
+}
+
 
 /* ==============================
    PASSWORD
 ================================= */
 .password-toggle {
     position: absolute;
+
     right: 10px;
     top: 50%;
+
     transform:
         translateY(-50%);
+
     width: 32px;
     height: 32px;
+
     display: grid;
     place-items: center;
+
     border: 0;
+
     background: transparent;
+
     color: #8b95a5;
+
     cursor: pointer;
+
     border-radius: 6px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
 }
 
+
 .password-toggle:hover {
-    background: #e9edf3;
-    color: var(--text);
+    background:
+        rgba(99, 102, 241, 0.10);
+
+    color:
+        var(--secondary);
 }
+
 
 /* ==============================
    ERRORES
@@ -287,6 +418,7 @@ body {
     color: var(--danger);
     font-size: 12px;
 }
+
 
 /* ==============================
    OPCIONES
@@ -301,6 +433,7 @@ body {
     font-size: 12px;
 }
 
+
 .remember {
     display: flex;
     align-items: center;
@@ -309,50 +442,96 @@ body {
     cursor: pointer;
 }
 
+
 .remember input {
     accent-color:
         var(--primary);
 }
 
+
 .form-options a {
     color: var(--primary);
     text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s ease;
 }
 
+
 .form-options a:hover {
+    color: var(--secondary);
     text-decoration: underline;
 }
+
 
 /* ==============================
    BOTONES
 ================================= */
 .btn {
     width: 100%;
+
     height: 48px;
+
     border: 0;
+
     border-radius: 10px;
+
     display: flex;
-    justify-content: center;
+
+    justify-content:
+        center;
+
     align-items: center;
+
     gap: 9px;
+
     font-size: 14px;
+
     font-weight: 700;
+
     cursor: pointer;
-    transition: 0.2s ease;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
 }
 
+
+/* ==============================
+   BOTÓN PRINCIPAL
+================================= */
 .btn--primary {
     background:
-        var(--primary);
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
     color: white;
+
+    box-shadow:
+        0 8px 20px
+        rgba(37, 99, 235, 0.22);
 }
+
 
 .btn--primary:hover {
     background:
-        var(--primary-hover);
+        linear-gradient(
+            135deg,
+            #1d4ed8,
+            #4338ca
+        );
+
     transform:
         translateY(-1px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(37, 99, 235, 0.30);
 }
+
 
 /* ==============================
    CAMBIO LOGIN / REGISTRO
@@ -361,20 +540,28 @@ body {
     text-align: center;
     color: var(--muted);
     font-size: 13px;
+    font-weight: 600;
     margin-top: 2px;
 }
+
 
 .switch-button {
     border: 0;
     background: transparent;
-    color: var(--primary);
+    color:
+        var(--primary);
     font: inherit;
     font-weight: 700;
     cursor: pointer;
     padding: 0;
+    transition:
+        color 0.2s ease;
 }
 
+
 .switch-button:hover {
+    color:
+        var(--secondary);
     text-decoration: underline;
 }
 
@@ -383,40 +570,66 @@ body {
 ================================= */
 .toast {
     position: fixed;
+
     right: 24px;
     bottom: 24px;
+
     display: flex;
+
     align-items: center;
+
     gap: 10px;
+
     max-width:
         calc(100% - 48px);
+
     padding:
         13px 17px;
+
     border-radius: 10px;
-    background: #202124;
+
+    background:
+        rgba(20, 20, 30, 0.88);
+
     color: white;
+
     font-size: 13px;
+
     box-shadow:
         0 12px 30px
-        rgba(0, 0, 0, 0.18);
+        rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
     opacity: 0;
+
     visibility: hidden;
+
     transform:
         translateY(15px);
-    transition: 0.25s ease;
+
+    transition:
+        0.25s ease;
 }
+
 
 .toast.show {
     opacity: 1;
+
     visibility: visible;
+
     transform:
         translateY(0);
 }
 
+
 .toast i {
     color: #4ade80;
+
     font-size: 17px;
 }
+
 
 /* ==============================
    AJUSTE CARA DE REGISTRO
@@ -426,98 +639,138 @@ body {
     padding-bottom: 32px;
 }
 
+
 .auth-face--back .brand {
     margin-bottom: 32px;
 }
+
 
 .auth-face--back .auth-header {
     margin-bottom: 20px;
 }
 
+
 .auth-face--back .auth-form {
     gap: 12px;
 }
 
+
 /* ==============================
    INTERACCIÓN ENTRE CARAS 3D
 ================================= */
-/* Por defecto: LOGIN activo */
+
+/*
+    Por defecto:
+    LOGIN activo.
+*/
 .auth-face--front {
     pointer-events: auto;
 }
 
-/* Cuando la tarjeta está girada: REGISTRO activo */
-.auth-card.is-flipped .auth-face--front {
+
+/*
+    Cuando la tarjeta está girada:
+    LOGIN queda inactivo.
+*/
+.auth-card.is-flipped
+.auth-face--front {
     pointer-events: none;
 }
 
-.auth-card.is-flipped .auth-face--back {
+
+/*
+    Cuando la tarjeta está girada:
+    REGISTRO queda activo.
+*/
+.auth-card.is-flipped
+.auth-face--back {
     pointer-events: auto;
 }
+
 
 /* ==============================
    RESPONSIVE
 ================================= */
 @media (max-width: 520px) {
+
     .page {
         padding:
             20px 14px;
     }
 
+
     .auth-card {
         height: 620px;
     }
+
 
     .auth-content {
         padding:
             32px 25px;
     }
 
+
     .brand {
         margin-bottom: 42px;
     }
+
 
     .auth-header h1,
     .auth-header h2 {
         font-size: 26px;
     }
 
+
     .auth-header {
         margin-bottom: 25px;
     }
+
 
     .auth-form {
         gap: 14px;
     }
 
+
     .form-options {
         align-items:
             flex-start;
+
         flex-direction:
             column;
     }
 
+
     .toast {
         right: 14px;
+
         bottom: 14px;
+
         max-width:
             calc(100% - 28px);
     }
 }
 
+
+/* ==============================
+   MOBILE PEQUEÑO
+================================= */
 @media (max-width: 360px) {
+
     .auth-card {
         height: 600px;
     }
+
 
     .auth-content {
         padding:
             27px 20px;
     }
 
+
     .brand {
         margin-bottom: 34px;
     }
+
 
     .auth-header h1,
     .auth-header h2 {
@@ -525,16 +778,20 @@ body {
     }
 }
 
+
 /* ==============================
    ACCESIBILIDAD
 ================================= */
 @media (prefers-reduced-motion: reduce) {
+
     .auth-card__inner {
         transition: none;
     }
 
+
     .btn,
     .input-wrapper input,
+    .password-toggle,
     .toast {
         transition: none;
     }
