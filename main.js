@@ -53,12 +53,12 @@ function renderizar(lista = datos) {
                 
                     <button class="btn-editar" onClick="editar(${d.id})">
                         <i class="bi bi-pencil"></i>
-                        <span>Editar</span>
+                        <span>Edit</span>
                     </button>
 
                     <button class="btn-eliminar" onClick="eliminar(${d.id})">
                         <i class="bi bi-trash"></i>
-                        <span>Eliminar</span>
+                        <span>Delete</span>
                     </button>
                 </td>
             </tr>`;
