@@ -181,14 +181,15 @@ body {
 }
 
 .brand__icon {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     display: grid;
     place-items: center;
-    border-radius: 10px;
+    margin: 0 auto;
+    border-radius: 11px;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     box-shadow:0 8px 20px rgba(37, 99, 235, 0.22);
 }
 
@@ -481,6 +482,14 @@ body {
 
 .auth-face--back .auth-form {
     gap: 12px;
+}
+
+.auth-face--front .brand__icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 15px;
+    font-size: 38px;
+    transform: scale(1.55);
 }
 
 /* ==============================
