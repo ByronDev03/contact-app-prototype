@@ -468,12 +468,8 @@ body {
    AJUSTE CARA DE REGISTRO
 ================================= */
 .auth-face--back .auth-content {
-    padding-top: 32px;
-    padding-bottom: 32px;
-}
-
-.auth-face--back .brand {
-    margin-bottom: 32px;
+    justify-content: center;
+    padding: 42px;
 }
 
 .auth-face--back .auth-header {
