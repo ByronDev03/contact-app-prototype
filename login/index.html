@@ -26,8 +26,8 @@
 
                         <div class="auth-header">
                             <p class="auth-header__eyebrow">Welcome back</p>
-                            <h1>My Account</h1>
-                            <p>Please enter your details.</p>
+                            <h1>Sign in</h1>
+                            <p>Enter your details to continue.</p>
                         </div>
 
                         <form id="loginForm" class="auth-form">
@@ -37,7 +37,7 @@
                                 <label for="loginEmail">Email</label>
                                 <div class="input-wrapper">
                                     <i class="bi bi-envelope"></i>
-                                    <input type="email" id="loginEmail" placeholder="Enter email" autocomplete="email">
+                                    <input type="email" id="loginEmail" placeholder="Enter your email" autocomplete="email">
                                 </div>
                                 <small id="loginEmailError" class="form-error"></small>
                             </div>
@@ -47,7 +47,7 @@
                                 <label for="loginPassword">Password</label>
                                 <div class="input-wrapper">
                                     <i class="bi bi-lock"></i>
-                                    <input type="password" id="loginPassword" placeholder="Enter password" autocomplete="current-password">
+                                    <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password">
                                     <button type="button" class="password-toggle" data-target="loginPassword" aria-label="Mostrar contraseña">
                                         <i class="bi bi-eye"></i>
                                     </button>
@@ -59,20 +59,20 @@
                             <div class="form-options">
                                 <label class="remember">
                                     <input type="checkbox" id="remember">
-                                    <span>Recordarme</span>
+                                    <span>Remember me</span>
                                 </label>
-                                <a href="#" id="forgotPassword">Forgot password</a>
+                                <a href="#" id="forgotPassword">Forgot your password?</a>
                             </div>
 
                             <!-- BOTÓN -->
                             <button type="submit" class="btn btn--primary">
-                                <span>Sign In</span>
+                                <span>Sign in</span>
                                 <i class="bi bi-arrow-right"></i>
                             </button>
 
                             <!-- CAMBIAR A REGISTRO -->
                             <p class="switch-text">Don't have an account?
-                                <button type="button" class="switch-button" id="showRegister">Crear cuenta</button>
+                                <button type="button" class="switch-button" id="showRegister">Create account</button>
                             </p>
                         </form>
                     </div>
@@ -92,9 +92,9 @@
                         </div>
 
                         <div class="auth-header">
-                            <p class="auth-header__eyebrow">Comienza ahora</p>
-                            <h2>Crear cuenta</h2>
-                            <p>Regístrate para acceder al sistema.</p>
+                            <p class="auth-header__eyebrow">Get started</p>
+                            <h2>Create account</h2>
+                            <p>Create an account to get started.</p>
                         </div>
 
                         <form id="registerForm" class="auth-form">
@@ -104,7 +104,7 @@
                                 <label for="registerName">Full name</label>
                                 <div class="input-wrapper">
                                     <i class="bi bi-person"></i>
-                                    <input type="text" id="registerName" placeholder="Tu nombre" autocomplete="name">
+                                    <input type="text" id="registerName" placeholder="Enter your name" autocomplete="name">
                                 </div>
                                 <small id="registerNameError" class="form-error"></small>
                             </div>
@@ -114,7 +114,7 @@
                                 <label for="registerEmail">Email</label>
                                 <div class="input-wrapper">
                                     <i class="bi bi-envelope"></i>
-                                    <input type="email" id="registerEmail" placeholder="correo@ejemplo.com" autocomplete="email">
+                                    <input type="email" id="registerEmail" placeholder="you@example.com" autocomplete="email">
                                 </div>
                                 <small id="registerEmailError" class="form-error"></small>
                             </div>
@@ -124,7 +124,7 @@
                                 <label for="registerPassword">Password</label>
                                 <div class="input-wrapper">
                                     <i class="bi bi-lock"></i>
-                                    <input type="password" id="registerPassword" placeholder="Crea una contraseña" autocomplete="new-password">
+                                    <input type="password" id="registerPassword" placeholder="Create a password" autocomplete="new-password">
                                     <button type="button" class="password-toggle" data-target="registerPassword" aria-label="Mostrar contraseña">
                                         <i class="bi bi-eye"></i>
                                     </button>
@@ -134,13 +134,13 @@
 
                             <!-- BOTÓN -->
                             <button type="submit" class="btn btn--primary">
-                                <span>Registrarme</span>
+                                <span>Create account</span>
                                 <i class="bi bi-person-plus"></i>
                             </button>
 
                             <!-- VOLVER A LOGIN -->
-                            <p class="switch-text">¿Ya tienes una cuenta?
-                                <button type="button" class="switch-button" id="showLogin">Iniciar sesión</button>
+                            <p class="switch-text">Already have an account?
+                                <button type="button" class="switch-button" id="showLogin">Sign in</button>
                             </p>
                         </form>
                     </div>
