@@ -1,11 +1,11 @@
 body{
     font-family: Arial, sans-serif;
     margin:30px;
-    background: #f4f6f8;
+    background: #3F3F46;
 }
 
 h1{
-    color: #333;
+    color: white;
 }
 
 form{
@@ -41,11 +41,9 @@ button{
     border: none;
     border-radius: 6px;
     cursor: pointer;
-
     display: inline-flex;
     align-items: center;
     gap: 7px;
-
     font-size: 14px;
     transition: 0.2s ease;
 }
@@ -55,7 +53,6 @@ button i {
 }
 
 /* AGREGAR */
-
 #btnGuardar{
     background: #28a745;
     color: white;
@@ -66,7 +63,6 @@ button i {
 }
 
 /* CANCELAR */
-
 #btnCancelar{
     background: #6c757d;
     color: white;
@@ -77,18 +73,17 @@ button i {
 }
 
 /* EDITAR */
-
 .btn-editar {
-    background: #0000ff;
+    background: #708090;
     color: white;
 }
 
 .btn-editar:hover {
-    background: #0000cc;
+    background: #808080;
+    /*background: #5a6268;*/
 }
 
 /* ELIMINAR */
-
 .btn-eliminar {
     background: #dc3545;
     color: white;
@@ -177,15 +172,16 @@ select {
 table{
     width: 100%;
     border-collapse: collapse;
-    background: white;
+    background: #5a6268;
 }
 
 th, td{
     padding: 10px;
     border-bottom: 1px solid #ddd;
     text-align: left;
+    color: white;
 }
 
 th{
-    background: #e9ecef;
+    background: #000000;
 }
