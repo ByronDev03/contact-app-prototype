@@ -258,6 +258,37 @@ body {
     transition: color 0.2s ease;
 }
 
+.input-wrapper:focus-within .floating-label,
+.input-wrapper input:not(:placeholder-shown) + .floating-label {
+    top: 0;
+    transform: translateY(-50%);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--input);
+    padding: 0 4px;
+}
+
+.input-wrapper input:focus::placeholder {
+    color: transparent;
+}
+
+.floating-label {
+    position: absolute;
+    left: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6f7b8f;
+    font-size: 16px;
+    font-weight: 600;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    background: var(--input);
+    padding: 0 4px;
+    border: none;
+    z-index: 2;
+}
+
 /* ==============================
    INPUTS
 ================================= */
