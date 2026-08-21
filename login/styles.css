@@ -283,8 +283,8 @@ body {
     font-weight: 600;
     pointer-events: none;
     transition: all 0.2s ease;
-    background: var(--input);
-    padding: 0 4px;
+    background: transparent;
+    padding: 0;
     border: none;
     z-index: 2;
 }
