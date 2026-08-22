@@ -265,8 +265,6 @@ body {
     color: var(--primary);
     font-size: 12px;
     font-weight: 600;
-    background: var(--input);
-    padding: 0 4px;
 }
 
 .input-wrapper input:focus::placeholder {
@@ -287,6 +285,18 @@ body {
     padding: 0;
     border: none;
     z-index: 2;
+}
+
+.floating-label::before {
+    content: "";
+    position: absolute;
+    left: -4px;
+    right: -4px;
+    top: 50%;
+    height: 2px;
+    transform: translateY(-50%);
+    background: var(--input);
+    z-index: -1;
 }
 
 /* ==============================
