@@ -1,6 +1,6 @@
 let datos = JSON.parse(localStorage.getItem('usuarios')) || [
-    {id: 1, nombre: 'Byron', email: 'byronjorge.158@gmail.com', edad: 23},
-    {id: 2, nombre: 'Danna', email: 'danna.147@hotmail.com', edad: 30}
+    {id: 1, nombre: 'Byron', telefono: '7351234567', fechaCreacion: Date.now()},
+    {id: 2, nombre: 'Danna', telefono: '7771990122', fechaCreacion: Date.now()}
 ];
 
 function guardarDatos() {
@@ -11,16 +11,13 @@ function guardarDatos() {
 const form = document.getElementById('formulario');
 const idInput = document.getElementById('id');
 const nombreInput = document.getElementById('nombre');
-const edadInput = document.getElementById('edad');
-const emailInput = document.getElementById('email');
+const telefonoInput = document.getElementById('telefono');
 const btnGuardar = document.getElementById('btnGuardar');
 const btnCancelar = document.getElementById('btnCancelar');
 const tbody = document.querySelector('#tabla tbody');
 const errorNombre = document.getElementById('errorNombre');
-const errorEdad = document.getElementById('errorEdad');
-const errorEmail = document.getElementById('errorEmail');
+const errorEdad = document.getElementById('errorTelefono');
 const busquedaInput = document.getElementById('busqueda');
-const filtroEdad = document.getElementById('filtroEdad');
 const btnLimpiarFiltros = document.getElementById('btnLimpiarFiltros');
 const contadorResultados = document.getElementById('contadorResultados');
 

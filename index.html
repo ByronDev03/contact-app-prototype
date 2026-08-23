@@ -13,25 +13,23 @@
     <form id="formulario">
         <input type="hidden" id="id">
         
+         <!-- NOMBRE -->
         <div class="campo">
             <input type="text" id="nombre" placeholder="Nombre">
             <small id="errorNombre" class="mensaje-error"></small>
         </div>
         
+        <!-- TELÉFONO -->
         <div class="campo">
-            <input type="number" id="edad" placeholder="Edad">
-            <small id="errorEdad" class="mensaje-error"></small>
-        </div>
-
-        <div class="campo">
-            <input type="email" id="email" placeholder="Correo Electrónico">
-            <small id="errorEmail" class="mensaje-error"></small>
+            <input type="tel" id="telefono" placeholder="Número telefónico">
+            <small id="errorTelefono" class="mensaje-error"></small>
         </div>
         
         <button type="submit" id="btnGuardar">
             <i class="bi bi-plus-circle"></i>
             <span>Agregar</span>
         </button>
+
         <button type="button" id="btnCancelar" class="oculto">
             <i class="bi bi-x-lg"></i>
             <span>Cancelar</span>
@@ -43,19 +41,8 @@
             <label for="busqueda">Buscar</label>
             <div class="input-busqueda">
                 <i class="bi bi-search"></i>
-                <input type="text" id="busqueda" placeholder="Nombre o Correo Electrónico">
+                <input type="text" id="busqueda" placeholder="Nombre o número telefónico">
             </div>
-        </div>
-
-        <div class="campo-filtro">
-            <label for="filtroEdad">Filtrar por edad</label>
-            <select id="filtroEdad">
-                <option value="">Todas las edades</option>
-                <option value="1-17">1 - 17 años</option>
-                <option value="18-30">18 - 30 años</option>
-                <option value="31-50">31 - 50 años</option>
-                <option value="51-99">51 - 99 años</option>
-            </select>
         </div>
 
         <button type="button" id="btnLimpiarFiltros">
@@ -69,10 +56,9 @@
     <table id="tabla">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>NOMBRE</th>
-                <th>EDAD</th>
-                <th>CORREO ELECTRÓNICO</th>
+                <th>NÚMERO TELEFÓNICO</th>
+                <th>AGREGADO</th>
                 <th>ACCIONES</th>
             </tr>
         </thead>
