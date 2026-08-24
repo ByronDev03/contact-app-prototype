@@ -16,10 +16,28 @@ const btnGuardar = document.getElementById('btnGuardar');
 const btnCancelar = document.getElementById('btnCancelar');
 const tbody = document.querySelector('#tabla tbody');
 const errorNombre = document.getElementById('errorNombre');
-const errorEdad = document.getElementById('errorTelefono');
+const errorTelefono = document.getElementById('errorTelefono');
 const busquedaInput = document.getElementById('busqueda');
 const btnLimpiarFiltros = document.getElementById('btnLimpiarFiltros');
 const contadorResultados = document.getElementById('contadorResultados');
+
+// FUNCIÓN PARA MOSTRAR "HACE X DÍAS"
+function tiempoTranscurrido(fecha) {
+    const ahora = new Date();
+    const fechaCreacion = new Date(fecha);
+    const diferencia = ahora - fechaCreacion;
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+
+    if (dias === 0) {
+        return 'Hoy';
+    }
+
+    if (dias === 1) {
+        return 'Hace 1 día';
+    }
+
+    return `Hace ${dias} días`;
+}
 
 // MOSTRAR DATOS (READ)
 function renderizar(lista = datos) {
@@ -28,7 +46,7 @@ function renderizar(lista = datos) {
     if (lista.length == 0) {
         tbody.innerHTML = `
             <tr>
-                <td colspan="5" class="sin-resultados">
+                <td colspan="4" class="sin-resultados">
                     <i class="bi bi-search"></i>
                     No se encontaron resultados.
                 </td>
@@ -42,10 +60,9 @@ function renderizar(lista = datos) {
     lista.forEach(d => {
         const fila = `
             <tr>
-                <td>${d.id}</td>
                 <td>${d.nombre}</td>
-                <td>${d.edad}</td>
-                <td>${d.email}</td>
+                <td>${d.telefono}</td>
+                <td>${tiempoTranscurrido(d.fechaCreacion)}</td>
                 <td class="acciones">
                 
                     <button class="btn-editar" onClick="editar(${d.id})">
@@ -69,32 +86,12 @@ function renderizar(lista = datos) {
 // BÚSQUEDA Y FILTRADO
 function aplicarFiltros() {
     const texto = busquedaInput.value.trim().toLowerCase();
-    const rangoEdad = filtroEdad.value;
 
     const resultados = datos.filter(d => {
-        const coincideTexto = 
-            d.nombre.toLowerCase().includes(texto) ||
-            d.email.toLowerCase().includes(texto);
-
-        let coincideEdad = true;
-
-        if (rangoEdad === '1-17') {
-            coincideEdad = d.edad >= 1 && d.edad <= 17;
-        }
-
-        if (rangoEdad === '18-30') {
-            coincideEdad = d.edad >= 18 && d.edad <= 30;
-        }
-
-        if (rangoEdad === '31-50') {
-            coincideEdad = d.edad >= 31 && d.edad <= 50;
-        }
-
-        if (rangoEdad === '51-99') {
-            coincideEdad = d.edad >= 51 && d.edad <= 99;
-        }
-
-        return coincideTexto && coincideEdad;
+        return (
+            d.nombre.toLowerCase().includes(texto) || 
+            d.telefono.includes(texto)
+        );
     });
 
     renderizar(resultados);
@@ -102,11 +99,8 @@ function aplicarFiltros() {
 
 busquedaInput.addEventListener('input', aplicarFiltros);
 
-filtroEdad.addEventListener('change', aplicarFiltros);
-
 btnLimpiarFiltros.addEventListener('click', () => {
     busquedaInput.value = '';
-    filtroEdad.value = '';
     renderizar();
 });
 
@@ -117,12 +111,10 @@ function validarFormulario() {
 
     // Limpiar mensajes anteriores
     errorNombre.textContent = '';
-    errorEdad.textContent = '';
-    errorEmail.textContent = '';
+    errorTelefono.textContent = '';
 
     nombreInput.classList.remove('input-error');
-    edadInput.classList.remove('input-error');
-    emailInput.classList.remove('input-error');
+    telefonoInput.classList.remove('input-error');
 
     // VALIDAR NOMBRE
     const nombre = nombreInput.value.trim();
@@ -141,31 +133,16 @@ function validarFormulario() {
         valido = false;
     }
 
-    // VALIDAR EDAD
-    const edad = Number(edadInput.value);
+    // VALIDAR TELÉFONO
+    const telefono = telefonoInput.value.trim();
 
-    if (edadInput.value === '') {
-        errorEdad.textContent = 'La edad es obligatoria.';
-        edadInput.classList.add('input-error');
+    if (telefono == '') {
+        errorTelefono.textContent = 'El número telefónico es obligatorio.';
+        telefonoInput.classList.add('input-error');
         valido = false;
-    } else if (edad < 1 || edad > 99) {
-        errorEdad.textContent = 'La edad debe estar entre 1 y 99 años.';
-        edadInput.classList.add('input-error');
-        valido = false;
-    }
-
-    // VALIDAR EMAIL
-    const email = emailInput.value.trim();
-
-    const formatoEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (email === '') {
-        errorEmail.textContent = 'El correo electrónico es obligatorio.';
-        emailInput.classList.add('input-error');
-        valido = false;
-    } else if (!formatoEmail.test(email)) {
-        errorEmail.textContent = 'Ingresa un correo electrónico válido.';
-        emailInput.classList.add('input-error');
+    } else if (!/^[0-9\s+()-]{7,20}$/.test(telefono)) {
+        errorTelefono.textContent = 'Ingresa un número telefónico válido.';
+        telefonoInput.classList.add('input-error');
         valido = false;
     }
 
@@ -182,22 +159,20 @@ form.addEventListener('submit', e => {
 
     const id = idInput.value;
     const nombre = nombreInput.value.trim();
-    const edad = +edadInput.value;
-    const email = emailInput.value.trim();
+    const telefono = telefonoInput.value.trim();
 
     if (id) {
         // Actualizar
         const item = datos.find(d => d.id == id);
         item.nombre = nombre;
-        item.edad = edad;
-        item.email = email;
+        item.telefono = telefono;
     } else {
         // Crear
         datos.push({
             id: Date.now(),
             nombre,
-            edad,
-            email
+            telefono,
+            fechaCreacion: Date.now()
         });
     }
 
@@ -220,8 +195,7 @@ function editar(id) {
 
     idInput.value = item.id;
     nombreInput.value = item.nombre;
-    edadInput.value = item.edad;
-    emailInput.value = item.email;
+    telefonoInput.value = item.telefono;
 
     btnGuardar.querySelector('span').textContent = 'Actualizar';
     btnGuardar.querySelector('i').className = 'bi bi-arrow-repeat';
@@ -260,13 +234,11 @@ btnCancelar.addEventListener('click', () => {
 
     // Limpiar mensajes de error
     errorNombre.textContent = '';
-    errorEdad.textContent = '';
-    errorEmail.textContent = '';
+    errorTelefono.textContent = '';
 
     // Quitar estilos de error
     nombreInput.classList.remove('input-error');
-    edadInput.classList.remove('input-error');
-    emailInput.classList.remove('input-error');
+    telefonoInput.classList.remove('input-error');
 });
 
 renderizar();
