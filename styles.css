@@ -156,13 +156,13 @@ select {
 #contadorResultados {
     margin: 0 0 10px 0;
     font-size: 14px;
-    color: #666;
+    color: white;
 }
 
 .sin-resultados {
     text-align: center;
     padding: 25px !important;
-    color: #777;
+    color: white;
 }
 
 .sin-resultados i {

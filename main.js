@@ -29,14 +29,14 @@ function tiempoTranscurrido(fecha) {
     const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
 
     if (dias === 0) {
-        return 'Hoy';
+        return 'Today';
     }
 
     if (dias === 1) {
-        return 'Hace 1 día';
+        return '1 day ago';
     }
 
-    return `Hace ${dias} días`;
+    return `${dias} days ago`;
 }
 
 // MOSTRAR DATOS (READ)
@@ -48,12 +48,12 @@ function renderizar(lista = datos) {
             <tr>
                 <td colspan="4" class="sin-resultados">
                     <i class="bi bi-search"></i>
-                    No se encontaron resultados.
+                    No results found.
                 </td>
             </tr>    
         `;
 
-        contadorResultados.textContent = '0 resultados';
+        contadorResultados.textContent = '0 results';
         return;
     }
 
@@ -80,7 +80,7 @@ function renderizar(lista = datos) {
     });
 
     contadorResultados.textContent = 
-        `${lista.length} ${lista.length === 1 ? 'resultado' : 'resultados'}`;
+        `${lista.length} ${lista.length === 1 ? 'result' : 'results'}`;
 }
 
 // BÚSQUEDA Y FILTRADO
@@ -120,15 +120,15 @@ function validarFormulario() {
     const nombre = nombreInput.value.trim();
 
     if (nombre === '') {
-        errorNombre.textContent = 'El nombre es obligatorio.';
+        errorNombre.textContent = 'Name is required.';
         nombreInput.classList.add('input-error');
         valido = false;
     } else if (nombre.length < 2) {
-        errorNombre.textContent = 'El nombre debe contener al menos 2 caracteres.';
+        errorNombre.textContent = 'Name must contain at least 2 characters.';
         nombreInput.classList.add('input-error');
         valido = false;
     } else if (!/^[a-zA-ZÁÉÍÓÚáéíóúÑñ\s]+$/.test(nombre)) {
-        errorNombre.textContent = 'El nombre no puede contener números ni caracteres especiales.';
+        errorNombre.textContent = 'Name cannot contain numbers or special characters.';
         nombreInput.classList.add('input-error');
         valido = false;
     }
@@ -137,11 +137,11 @@ function validarFormulario() {
     const telefono = telefonoInput.value.trim();
 
     if (telefono == '') {
-        errorTelefono.textContent = 'El número telefónico es obligatorio.';
+        errorTelefono.textContent = 'Phone number is required.';
         telefonoInput.classList.add('input-error');
         valido = false;
     } else if (!/^[0-9\s+()-]{7,20}$/.test(telefono)) {
-        errorTelefono.textContent = 'Ingresa un número telefónico válido.';
+        errorTelefono.textContent = 'Enter a valid phone number.';
         telefonoInput.classList.add('input-error');
         valido = false;
     }
@@ -181,7 +181,7 @@ form.addEventListener('submit', e => {
     form.reset();
     idInput.value = '';
 
-    btnGuardar.querySelector('span').textContent = 'Agregar';
+    btnGuardar.querySelector('span').textContent = 'Add Contact';
     btnGuardar.querySelector('i').className = 'bi bi-plus-circle';
 
     btnCancelar.classList.add('oculto');
@@ -197,7 +197,7 @@ function editar(id) {
     nombreInput.value = item.nombre;
     telefonoInput.value = item.telefono;
 
-    btnGuardar.querySelector('span').textContent = 'Actualizar';
+    btnGuardar.querySelector('span').textContent = 'Update Contact';
     btnGuardar.querySelector('i').className = 'bi bi-arrow-repeat';
 
     btnCancelar.classList.remove('oculto');
@@ -210,7 +210,7 @@ function editar(id) {
 
 // ELIMINAR (DELETE)
 function eliminar(id) {
-    if (confirm('¿Eliminar este registro?')) {
+    if (confirm('Delete this contact?')) {
         datos = datos.filter(d => d.id != id);
         guardarDatos();
         renderizar();
@@ -226,7 +226,7 @@ btnCancelar.addEventListener('click', () => {
     idInput.value = '';
 
     // Restaurar botón Agregar
-    btnGuardar.querySelector('span').textContent = 'Agregar';
+    btnGuardar.querySelector('span').textContent = 'Add Contact';
     btnGuardar.querySelector('i').className = 'bi bi-plus-circle';
 
     // Ocultar el botón cancelar

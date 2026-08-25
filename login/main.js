@@ -87,12 +87,12 @@ loginForm.addEventListener(
         let valido = true;
 
         if (email === '') {
-            mostrarError('loginEmailError', 'El correo electrónico es obligatorio.');
+            mostrarError('loginEmailError', 'Email is required.');
             valido = false;
         }
 
         if (password === '') {
-            mostrarError('loginPasswordError', 'La contraseña es obligatoria.');
+            mostrarError('loginPasswordError', 'Password is required.');
             valido = false;
         }
 
@@ -138,24 +138,24 @@ registerForm.addEventListener(
         let valido = true;
 
         if (name === '') {
-            mostrarError('registerNameError', 'El nombre es obligatorio.');
+            mostrarError('registerNameError', 'Name is required.');
 
             valido = false;
         }
 
         if (email === '') {
-            mostrarError('registerEmailError', 'El correo electrónico es obligatorio.');
+            mostrarError('registerEmailError', 'Email is required.');
 
             valido = false;
         }
 
         if (password === '') {
-            mostrarError('registerPasswordError', 'La contraseña es obligatoria.');
+            mostrarError('registerPasswordError', 'Password is required.');
 
             valido = false;
 
         } else if (password.length < 6) {
-            mostrarError('registerPasswordError', 'La contraseña debe contener al menos 6 caracteres.');
+            mostrarError('registerPasswordError', 'Password must contain at least 6 characters.');
             valido = false;
         }
 
