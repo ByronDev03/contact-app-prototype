@@ -1,3 +1,20 @@
+<h1 align="center">Contact Manager App</h1>
+
+---
+
+### Frontend
+
+
+
+---
+
+### Backend
+
+
+
+---
+
+### Database Arquitecture
 
 <details>
 <summary>Conceptual Design (ER Diagram)</summary>
