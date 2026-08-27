@@ -45,19 +45,19 @@ CREATE TABLE user (
     name        VARCHAR(80)   NOT NULL, 
     email       VARCHAR(80)   NOT NULL UNIQUE,
     password    VARCHAR(255)  NOT NULL,
-    created_at  DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_at  DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE contact (
     contact_id    CHAR(36)      NOT NULL PRIMARY KEY,
     user_id       CHAR(36)      NOT NULL,
     name          VARCHAR(80)   NOT NULL, 
-    phone         VARCHAR(20)   NOT NULL UNIQUE,
+    phone         VARCHAR(20)   NOT NULL,
     created_at    DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at    DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at    DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
     CONSTRAINT fk_contact_user
-    FOREIGN KEY (user_id) REFERENCES user(user_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
 </details>
