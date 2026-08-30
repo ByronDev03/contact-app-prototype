@@ -20,7 +20,7 @@
 <summary>Conceptual Design (ER Diagram)</summary>
 
 <div align="center">
-    <img src="/assets/conceptual_design.png" width="600" alt="er relational"/>
+    <img src="/frontend/assets/conceptual_design.pngassets.png" width="600" alt="er relational"/>
 </div>
 </details>
 
@@ -28,7 +28,7 @@
 <summary>Logical Design (Relational Model)</summary>
 
 <div align="center">
-    <img src="/assets/logical_design.png" width="600" alt="relational model"/>
+    <img src="/frontend/assets/logical_design.png" width="600" alt="relational model"/>
 </div>
 </details>
 
