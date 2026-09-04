@@ -1,16 +1,36 @@
 <h1 align="center">Contact Manager App</h1>
 
----
-
-### Frontend
-
-
+A full-stack contact management application for creating, managing and organizing users and contacts.
 
 ---
 
-### Backend
+## About the Project
+Contact Manager App is a full-stack web application designed to manage users and contacts.
+
+The application allows users to perform CRUD operations through a frontend interface connected to a PHP REST API and a MySQL database.
+
+This project is being developed as a learning project to practice full-stack web development concepts, including frontend development, backend development, REST APIs, HTTP methods, database design and operations, validation, and error handling.
+
+---
+
+## Features
 
 
+
+---
+
+## Technologies
+**Frontend**
+- HTML5
+- CSS3
+- JavaScript
+
+**Backend**
+- PHP
+- REST API
+
+**Database**
+- MySQL
 
 ---
 
@@ -61,3 +81,6 @@ CREATE TABLE contact (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
 </details>
+
+## Author
+*Developed by Byron Jorge Ortega Cuenca*
