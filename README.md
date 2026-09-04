@@ -5,11 +5,11 @@ A full-stack contact management application for creating, managing and organizin
 ---
 
 ## About the Project
-Contact Manager App is a full-stack web application designed to manage users and contacts.
+<p align="justify">Contact Manager App is a full-stack web application designed to manage users and contacts.</p>
 
-The application allows users to perform CRUD operations through a frontend interface connected to a PHP REST API and a MySQL database.
+<p align="justify">The application allows users to perform CRUD operations through a frontend interface connected to a PHP REST API and a MySQL database.</p>
 
-This project is being developed as a learning project to practice full-stack web development concepts, including frontend development, backend development, REST APIs, HTTP methods, database design and operations, validation, and error handling.
+<p align="justify">This project is being developed as a learning project to practice full-stack web development concepts, including frontend development, backend development, REST APIs, HTTP methods, database design and operations, validation, and error handling.</p>
 
 ---
 
