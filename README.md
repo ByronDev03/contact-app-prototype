@@ -82,5 +82,11 @@ CREATE TABLE contact (
 ```
 </details>
 
+---
+
+## Installation
+
+---
+
 ## Author
 *Developed by Byron Jorge Ortega Cuenca*
