@@ -1,13 +1,11 @@
 <?php
 
 error_reporting(E_ALL);
-
-ini_set('display_errors', '1');
+ini_set('display_errors', '0');
 
 header('Content-Type: application/json');
 
 require_once __DIR__ . '/../../config/connection.php';
-
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'DELETE') {
     exit;
 }
 
-
 try {
 
     /*
@@ -35,45 +32,30 @@ try {
     | Get JSON data
     |--------------------------------------------------------------------------
     */
+    $json = file_get_contents('php://input');
 
-    $data = json_decode(file_get_contents('php://input'), true);
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Validate JSON
-    |--------------------------------------------------------------------------
-    */
-
-    if ($data === null) {
-
-        http_response_code(400);
-
-        echo json_encode([
-            'success' => false,
-            'message' => 'Invalid JSON data.'
-        ]);
-
-        exit;
-    }
+    $data = json_decode(
+        $json,
+        true,
+        512,
+        JSON_THROW_ON_ERROR
+    );
 
 
     /*
     |--------------------------------------------------------------------------
-    | Get and clean user ID
+    | Get user ID
     |--------------------------------------------------------------------------
     */
 
-    $userId = trim($data['user_id'] ?? '');
-
+    $userId = $data['user_id'] ?? null;
 
     /*
     |--------------------------------------------------------------------------
-    | Validate required field
+    | Validate user ID exists
     |--------------------------------------------------------------------------
     */
-
-    if (!$userId) {
+    if (!array_key_exists('user_id', $data)) {
 
         http_response_code(400);
 
@@ -85,6 +67,73 @@ try {
         exit;
     }
 
+    $userId = $data['user_id'];
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Validate user ID type
+    |--------------------------------------------------------------------------
+    */
+    if (!is_string($userId)) {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'success' => false,
+            'message' => 'user_id must be a string.'
+        ]);
+
+        exit;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Validate user ID is not empty
+    |--------------------------------------------------------------------------
+    */
+    if (trim($userId) === '') {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'success' => false,
+            'message' => 'user_id cannot be empty.'
+        ]);
+
+        exit;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Clean user ID
+    |--------------------------------------------------------------------------
+    */
+    $userId = trim($userId);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Validate UUID format
+    |--------------------------------------------------------------------------
+    */
+    $isValidUuid = preg_match(
+        '/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i',
+        $userId
+    );
+
+    if (!$isValidUuid) {
+
+        http_response_code(400);
+
+        echo json_encode([
+            'success' => false,
+            'message' => 'Invalid user_id format.'
+        ]);
+
+        exit;
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -137,6 +186,15 @@ try {
         ]
     ]);
 
+} catch (JsonException $e) {
+
+    http_response_code(400);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Invalid JSON data.'
+    ]);
+
 } catch (PDOException $e) {
 
     http_response_code(500);
@@ -144,5 +202,14 @@ try {
     echo json_encode([
         'success' => false,
         'message' => 'Failed to delete user.'
+    ]);
+
+} catch (Throwable $e) {
+
+    http_response_code(500);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'An unexpected error occurred.'
     ]);
 }
