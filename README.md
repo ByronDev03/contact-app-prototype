@@ -85,6 +85,15 @@ CREATE TABLE contact (
 ---
 
 ## Installation
+1. **Clone the repository**
+    ```Bash
+    git clone https://github.com/ByronDev03/contact-app-prototype.git
+    ```
+    
+2. **Entrar al proyecto**
+    ```Bash
+    cd contact-app-prototype
+    ```
 
 ---
 
